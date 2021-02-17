@@ -3,9 +3,11 @@
 let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 let containerEl = document.getElementById('container');
 let tableEl = document.createElement('table');
+tableEl.setAttribute('id','table');
 let tbodyEl;
 containerEl.appendChild(tableEl);
 let locations = [];
+let tfootEl ;
 
 function Location(location, minCust, maxCust, avgCookies) {
     this.name = location;
@@ -72,23 +74,9 @@ for (let i = 0; i < locations.length; i++) {
 
 
 }
-
-
 tableFooter();
 
-function totalPerHour(locations) {
-    let total = [];
-    let value = 0;
-    for (let i = 0; i <= hours.length; i++) {
-        for (let j = 0; j < locations.length; j++) {
-            value += locations[j].ammountOfCookiesPerHour[i];
-        }
-        total.push(value);
-    }
-    return total;
-}
 
-//console.log(totalPerHour(locations));
 function tableHeader() {
     let theadEl = document.createElement('thead');
     tableEl.appendChild(theadEl);
@@ -115,10 +103,15 @@ function tableBody() {
 
 function tableFooter() {
     let total = totalPerHour(locations);
-    let tfootEl = document.createElement('tfoot');
+    if(tfootEl!==undefined)
+    {
+        tableEl.deleteTFoot();  
+    }
+    tfootEl = document.createElement('tfoot');
+    console.log(tfootEl.id);
     tableEl.appendChild(tfootEl);
     let trEl = document.createElement('tr');
-    tableEl.appendChild(trEl);
+    tfootEl.appendChild(trEl);
     let tdEl = document.createElement('td');
     trEl.appendChild(tdEl);
     tdEl.textContent = 'Totals';
@@ -127,6 +120,7 @@ function tableFooter() {
         trEl.appendChild(tdEl);
         tdEl.textContent = total[i];
     }
+    //console.log(tableEl);
 }
 
 
@@ -145,8 +139,19 @@ function addLocatoin(event) {
     newLocation.noCustomerPerHour();
     newLocation.ammountOfCookies();
     newLocation.render();
-    locations.push(newLocation);
 
-
+    totalPerHour(locations);
+    tableFooter();
 }
 
+function totalPerHour(locations) {
+    let total = [];
+    let value = 0;
+    for (let i = 0; i <= hours.length; i++) {
+        for (let j = 0; j < locations.length; j++) {
+            value += locations[j].ammountOfCookiesPerHour[i];
+        }
+        total.push(value);
+    }
+    return total;
+}
