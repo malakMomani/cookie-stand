@@ -19,17 +19,35 @@ tbody tr:nth-child(odd) {
     background: rgb(189, 188, 188);
   }
 
-nav a {
+#headerDiv {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header h1 {
+    text-align: center;
+}
+
+nav ul li {
+    list-style-type: none;
+    display: inline-block;
+}
+nav ul li a {
     text-decoration: none;
     color: rgb(0, 121, 84);
     display: inline-block;
+    margin-right: 8px;
 }
 nav  {
     text-align: center;
 }
-img {
+header img {
+    position: absolute;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 20%;
+    float : left;
+    /* width: 40px; */
 }
