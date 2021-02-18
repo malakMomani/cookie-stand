@@ -128,6 +128,12 @@ const form = document.getElementById('cookie-standForm');
 form.addEventListener('submit', addLocatoin);
 
 function addLocatoin(event) {
+    let validation = validateForm();
+    console.log(validation)
+    if(validation){
+        alert('Invlaid Input , Please try again');
+        return 0 ;
+    }
     event.preventDefault();
 
     const locationName = event.target.location.value;
@@ -148,10 +154,27 @@ function totalPerHour(locations) {
     let total = [];
     let value = 0;
     for (let i = 0; i <= hours.length; i++) {
+        value = 0;
         for (let j = 0; j < locations.length; j++) {
             value += locations[j].ammountOfCookiesPerHour[i];
         }
         total.push(value);
     }
     return total;
+}
+
+function validateForm(){
+
+    let locationFormName = document.getElementById('location').value;
+    let mincustForm = document.getElementById('minCust').value;
+    let maxCustForm = document.getElementById('maxCust').value;
+    let avgForm = document.getElementById('avg').value;
+
+    if(isNaN(locationFormName) && isNaN(mincustForm) && isNaN(maxCustForm) && isNaN(avgForm)){
+        return false;
+    }
+    else {
+        return true;
+    }
+      
 }
