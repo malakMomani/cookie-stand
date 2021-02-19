@@ -129,7 +129,6 @@ form.addEventListener('submit', addLocatoin);
 
 function addLocatoin(event) {
 
-   
     if(validateForm())
     {
         alert('Invalid Input , please try again');
@@ -170,6 +169,7 @@ function validateForm(){
     let mincustForm = document.getElementById('minCust').value;
     let maxCustForm = document.getElementById('maxCust').value;
     let avgForm = document.getElementById('avg').value;
+
     
     // console.log(locationFormName === 'location' && mincustForm == '0' && maxCustForm == '0' && avgForm == '0.0');
     // console.log(typeof mincustForm);
