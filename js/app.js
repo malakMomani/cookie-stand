@@ -108,7 +108,7 @@ function tableFooter() {
         tableEl.deleteTFoot();  
     }
     tfootEl = document.createElement('tfoot');
-    console.log(tfootEl.id);
+    //console.log(tfootEl.id);
     tableEl.appendChild(tfootEl);
     let trEl = document.createElement('tr');
     tfootEl.appendChild(trEl);
@@ -129,11 +129,11 @@ form.addEventListener('submit', addLocatoin);
 
 function addLocatoin(event) {
 
-    let validation = validateForm()
-    if(validation)
+   
+    if(validateForm())
     {
         alert('Invalid Input , please try again');
-        return 0;
+        return;
     }
     event.preventDefault();
 
@@ -171,17 +171,18 @@ function validateForm(){
     let maxCustForm = document.getElementById('maxCust').value;
     let avgForm = document.getElementById('avg').value;
     
-    // console.log(isNaN(locationFormName));
-    // console.log(isNaN(mincustForm));
-    // console.log(isNaN(mincustForm));
-    // console.log(isNaN(avgForm));
+    // console.log(locationFormName === 'location' && mincustForm == '0' && maxCustForm == '0' && avgForm == '0.0');
+    // console.log(typeof mincustForm);
+    // console.log(typeof maxCustForm);
+    // console.log(typeof avgForm);
 
-
-    if(isNaN(locationFormName) && !(isNaN(mincustForm)) && !(isNaN(maxCustForm)) && !(isNaN(avgForm))){
-        return false;
-    }
-    else {
+    
+    if(locationFormName === 'Enter New Location' || mincustForm == '0' || maxCustForm == '0' || avgForm == '0.0')
+    {
         return true;
     }
-      
+    else {
+        return false;
+    }
+
 }
