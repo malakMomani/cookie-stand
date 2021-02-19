@@ -129,6 +129,7 @@ form.addEventListener('submit', addLocatoin);
 
 function addLocatoin(event) {
 
+
     let validation = validateForm()
     if(validation)
     {
@@ -170,6 +171,7 @@ function validateForm(){
     let mincustForm = document.getElementById('minCust').value;
     let maxCustForm = document.getElementById('maxCust').value;
     let avgForm = document.getElementById('avg').value;
+
     
     // console.log(isNaN(locationFormName));
     // console.log(isNaN(mincustForm));
