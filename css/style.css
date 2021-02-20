@@ -209,13 +209,15 @@ label {
 #info div h4 {
   margin-left: 4px;
   font-weight: bold;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #003a37;
 }
 
 #info div p 
 {
   text-align: center;
   font-family: Georgia, 'Times New Roman', Times, serif;
+  color: #3d3d13;
 }
 
 #seattle {
